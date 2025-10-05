@@ -49,8 +49,8 @@ const JobList = () => {
     return (
       <Grid container spacing={3}>
         {[1, 2, 3].map((n) => (
-          <Grid item xs={12} md={6} lg={4} key={n}>
-            <Card sx={{ height: 450 }}>
+          <Grid item xs={12} md={6} key={n}>
+            <Card sx={{ height: 520, minHeight: 520, maxHeight: 520 }}>
               <CardContent>
                 <Skeleton variant="rectangular" height={30} sx={{ mb: 2, borderRadius: 1 }} />
                 <Skeleton variant="text" height={20} width="60%" sx={{ mb: 2 }} />
@@ -96,13 +96,15 @@ const JobList = () => {
 
       <Grid container spacing={3}>
         {jobs.map((job, index) => (
-          <Grid item xs={12} md={6} lg={4} key={job.id}>
+          <Grid item xs={12} md={6} key={job.id}>
             <Zoom in timeout={300 + index * 100}>
               <Card
                 onMouseEnter={() => setHoveredCard(job.id)}
                 onMouseLeave={() => setHoveredCard(null)}
                 sx={{
-                  height: '100%',
+                  height: 520,
+                  minHeight: 520,
+                  maxHeight: 520,
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
@@ -127,7 +129,7 @@ const JobList = () => {
                 }}
                 onClick={() => navigate(`/apply/${job.id}`)}
               >
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                <CardContent sx={{ flexGrow: 1, p: 3, overflow: 'auto' }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
                     <Typography
                       variant="h5"
@@ -160,7 +162,7 @@ const JobList = () => {
                     )}
                   </Box>
 
-                  <Box sx={{ mb: 2.5 }}>
+                  <Box sx={{ mb: 1.5 }}>
                     {job.company && (
                       <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.5, gap: 1 }}>
                         <Business
@@ -203,15 +205,15 @@ const JobList = () => {
                     </Box>
                   </Box>
 
-                  <Divider sx={{ my: 2, borderColor: 'rgba(255, 255, 255, 0.08)' }} />
+                  <Divider sx={{ my: 1.5, borderColor: 'rgba(255, 255, 255, 0.08)' }} />
 
                   <Typography
                     variant="body2"
                     color="text.secondary"
                     sx={{
-                      mb: 2,
+                      mb: 1.5,
                       display: '-webkit-box',
-                      WebkitLineClamp: 3,
+                      WebkitLineClamp: 2,
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -222,7 +224,7 @@ const JobList = () => {
                   </Typography>
 
                   {job.requirements && (
-                    <Box sx={{ mb: 2.5 }}>
+                    <Box sx={{ mb: 1.5 }}>
                       <Typography
                         variant="caption"
                         sx={{
